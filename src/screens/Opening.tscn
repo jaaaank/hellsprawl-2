@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/screens/opening.png" type="Texture" id=1]
+[ext_resource path="res://src/scripts/Opening.gd" type="Script" id=2]
+[ext_resource path="res://assets/audio/opening.wav" type="AudioStream" id=3]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Black/Black:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Black/Black:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+next_scene_path = "res://src/levels/TestLevel.tscn"
+
+[node name="Opening" type="CanvasLayer" parent="."]
+
+[node name="Opening" type="TextureRect" parent="Opening"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+stretch_mode = 7
+
+[node name="Black" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Black" type="ColorRect" parent="Black"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+
+[node name="OpeningSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/fade = SubResource( 1 )
