@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
@@ -20,18 +20,177 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HammerHitbox:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HammerHitbox:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SwordHitbox:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("SwordHitbox:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("LanceHitbox:monitorable")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("LanceHitbox:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=18]
 resource_name = "attkH"
+length = 0.7
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("HammerHitbox:monitorable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.25, 0.3, 0.35, 0.4, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HammerHitbox:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.25, 0.3, 0.35, 0.4, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false ]
+}
 
 [sub_resource type="Animation" id=19]
 resource_name = "attkL"
+length = 0.35
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("LanceHitbox:monitorable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.075, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LanceHitbox:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.075, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=20]
 resource_name = "attkS"
-
-[sub_resource type="Animation" id=21]
-resource_name = "attkW"
+length = 0.45
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("SwordHitbox:monitorable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.15, 0.225, 0.275 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SwordHitbox:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.15, 0.225, 0.275 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "dashL"
@@ -48,6 +207,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -2000, 0 ), Vector2( -2000, 0 ), Vector2( -1000, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.225 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -66,14 +237,24 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 2000, 0 ), Vector2( 2000, 0 ), Vector2( 1000, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.225 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
 
 [sub_resource type="AudioStreamRandomPitch" id=2]
 
 [sub_resource type="AudioStreamRandomPitch" id=3]
 
 [sub_resource type="AudioStreamRandomPitch" id=4]
-
-[sub_resource type="AudioStreamRandomPitch" id=5]
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 62, 85.5 )
@@ -84,16 +265,19 @@ script/source = "extends Area2D
 var flipped
 
 func _input(event):
-	if Input.is_action_just_pressed(\"left\") and !flipped:
+	check()
+	
+func check() -> void:
+	if Input.is_action_pressed(\"left\") and !flipped and !Input.is_action_pressed(\"right\"):
 		scale.x *= -1
 		flipped = true
-	if Input.is_action_just_pressed(\"right\") and flipped:
+	if Input.is_action_pressed(\"right\") and flipped and !Input.is_action_pressed(\"left\"):
 		scale.x *= -1
 		flipped = false
 "
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 44.5, 10 )
+extents = Vector2( 43.25, 85.5 )
 
 [sub_resource type="GDScript" id=15]
 script/source = "extends Area2D
@@ -101,33 +285,19 @@ script/source = "extends Area2D
 var flipped
 
 func _input(event):
-	if Input.is_action_just_pressed(\"left\") and !flipped:
+	check()
+	
+func check() -> void:
+	if Input.is_action_pressed(\"left\") and !flipped and !Input.is_action_pressed(\"right\"):
 		scale.x *= -1
 		flipped = true
-	if Input.is_action_just_pressed(\"right\") and flipped:
+	if Input.is_action_pressed(\"right\") and flipped and !Input.is_action_pressed(\"left\"):
 		scale.x *= -1
 		flipped = false
 "
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 85.75, 10 )
-
-[sub_resource type="GDScript" id=16]
-script/source = "extends Area2D
-
-var flipped
-
-func _input(event):
-	if Input.is_action_just_pressed(\"left\") and !flipped:
-		scale.x *= -1
-		flipped = true
-	if Input.is_action_just_pressed(\"right\") and flipped:
-		scale.x *= -1
-		flipped = false
-"
-
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 18.5, 53 )
+extents = Vector2( 85.75, 73 )
 
 [sub_resource type="GDScript" id=17]
 script/source = "extends Area2D
@@ -135,22 +305,25 @@ script/source = "extends Area2D
 var flipped
 
 func _input(event):
-	if Input.is_action_just_pressed(\"left\") and !flipped:
+	check()
+	
+func check() -> void:
+	if Input.is_action_pressed(\"left\") and !flipped and !Input.is_action_pressed(\"right\"):
 		scale.x *= -1
 		flipped = true
-	if Input.is_action_just_pressed(\"right\") and flipped:
+	if Input.is_action_pressed(\"right\") and flipped and !Input.is_action_pressed(\"left\"):
 		scale.x *= -1
 		flipped = false
 "
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 42.125, 12.75 )
+extents = Vector2( 42.125, 82 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 20
 script = ExtResource( 1 )
 
-[node name="PlayerHitbox" type="CollisionShape2D" parent="."]
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -85.5 )
 shape = SubResource( 1 )
 
@@ -165,16 +338,16 @@ drag_margin_left = 0.03
 drag_margin_right = 0.03
 
 [node name="PlayerSprite" type="Sprite" parent="."]
-position = Vector2( -1, -85 )
+position = Vector2( 0, -86 )
 scale = Vector2( 2.648, 2.648 )
 texture = ExtResource( 2 )
+hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 11 )
 anims/attkH = SubResource( 18 )
 anims/attkL = SubResource( 19 )
 anims/attkS = SubResource( 20 )
-anims/attkW = SubResource( 21 )
 anims/dashL = SubResource( 12 )
 anims/dashR = SubResource( 13 )
 
@@ -189,9 +362,6 @@ stream = SubResource( 3 )
 [node name="HammerAttack" type="AudioStreamPlayer" parent="SFX"]
 stream = SubResource( 4 )
 
-[node name="WhipAttack" type="AudioStreamPlayer" parent="SFX"]
-stream = SubResource( 5 )
-
 [node name="Dash" type="AudioStreamPlayer" parent="SFX"]
 
 [node name="Hurt" type="AudioStreamPlayer" parent="SFX"]
@@ -199,15 +369,19 @@ stream = SubResource( 5 )
 [node name="Dead" type="AudioStreamPlayer" parent="SFX"]
 
 [node name="HitDetector" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 36
+input_pickable = false
 monitorable = false
 
 [node name="HitShape" type="CollisionShape2D" parent="HitDetector"]
-visible = false
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 0, -85.5 )
 shape = SubResource( 6 )
 
 [node name="SwordHitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 0
 input_pickable = false
@@ -216,10 +390,11 @@ monitorable = false
 script = SubResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordHitbox"]
-position = Vector2( 104, -82 )
+position = Vector2( 105.25, -84.5 )
 shape = SubResource( 10 )
 
 [node name="LanceHitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 0
 input_pickable = false
@@ -228,22 +403,11 @@ monitorable = false
 script = SubResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LanceHitbox"]
-position = Vector2( 146, -58 )
+position = Vector2( 146, -73 )
 shape = SubResource( 9 )
 
-[node name="WhipHitbox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 0
-input_pickable = false
-monitoring = false
-monitorable = false
-script = SubResource( 16 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WhipHitbox"]
-position = Vector2( 80, -80 )
-shape = SubResource( 8 )
-
 [node name="HammerHitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 0
 input_pickable = false
@@ -252,5 +416,7 @@ monitorable = false
 script = SubResource( 17 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HammerHitbox"]
-position = Vector2( 103.875, -106 )
+position = Vector2( 103.875, -83 )
 shape = SubResource( 7 )
+
+[connection signal="body_entered" from="HitDetector" to="." method="_on_HitDetector_body_entered"]

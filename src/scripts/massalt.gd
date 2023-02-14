@@ -1,13 +1,12 @@
 extends Enemy
 
 onready var AnimP: = $AnimationPlayer
-onready var sprite: Sprite = $Mass
+onready var sprite: Sprite = $Sprite
 
 func _ready() -> void:
 	speed.x= 60.0
 	AnimP.play("walk")
 	health = 1
-	set_physics_process(false)
 	_velocity.x = -speed.x + 200.0
 	
 func _physics_process(delta: float) -> void:
@@ -16,3 +15,9 @@ func _physics_process(delta: float) -> void:
 	elif _velocity.x> 0:
 		sprite.flip_h = false
 		
+
+
+func _on_Hitbox_area_entered(area):
+	health -=1
+	if health <= 0:
+		queue_free()
