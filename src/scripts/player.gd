@@ -73,7 +73,7 @@ func _physics_process(delta):
 		sprite.flip_h = false
 
 func _input(event):
-
+	print(health)
 	if Input.is_action_just_pressed("attack") and canAttack:
 		attack()
 		print("attacked")
@@ -157,6 +157,25 @@ func dashCooldown():
 	canDash = true
 
 func _on_HitDetector_body_entered(body):
-	print("hj")
+	print("hurt")
 	health -= 1
+	updateHealth()
+	
+func updateHealth():
+	if health>10:
+		health = 10
+	GameData.playerHealth = health
+	print("health pushed")
 
+	
+func healthCheck():
+	health = GameData.playerHealth
+	print("health pulled")
+	if health>10:
+		health = 10
+	
+
+	#this WILL NOT WORK if running under 30 fps
+func _on_HitDetector_area_entered(area):
+	yield(get_tree().create_timer(.03334), "timeout")
+	healthCheck()
