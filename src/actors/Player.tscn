@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
@@ -20,6 +20,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+
+[sub_resource type="Animation" id=18]
+resource_name = "attkH"
+
+[sub_resource type="Animation" id=19]
+resource_name = "attkL"
+
+[sub_resource type="Animation" id=20]
+resource_name = "attkS"
+
+[sub_resource type="Animation" id=21]
+resource_name = "attkW"
 
 [sub_resource type="Animation" id=12]
 resource_name = "dashL"
@@ -55,18 +67,6 @@ tracks/0/keys = {
 "values": [ Vector2( 2000, 0 ), Vector2( 2000, 0 ), Vector2( 1000, 0 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 44.5, 10 )
-
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 85.75, 10 )
-
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 18.5, 53 )
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 42.125, 12.75 )
-
 [sub_resource type="AudioStreamRandomPitch" id=2]
 
 [sub_resource type="AudioStreamRandomPitch" id=3]
@@ -77,6 +77,74 @@ extents = Vector2( 42.125, 12.75 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 62, 85.5 )
+
+[sub_resource type="GDScript" id=14]
+script/source = "extends Area2D
+
+var flipped
+
+func _input(event):
+	if Input.is_action_just_pressed(\"left\") and !flipped:
+		scale.x *= -1
+		flipped = true
+	if Input.is_action_just_pressed(\"right\") and flipped:
+		scale.x *= -1
+		flipped = false
+"
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 44.5, 10 )
+
+[sub_resource type="GDScript" id=15]
+script/source = "extends Area2D
+
+var flipped
+
+func _input(event):
+	if Input.is_action_just_pressed(\"left\") and !flipped:
+		scale.x *= -1
+		flipped = true
+	if Input.is_action_just_pressed(\"right\") and flipped:
+		scale.x *= -1
+		flipped = false
+"
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 85.75, 10 )
+
+[sub_resource type="GDScript" id=16]
+script/source = "extends Area2D
+
+var flipped
+
+func _input(event):
+	if Input.is_action_just_pressed(\"left\") and !flipped:
+		scale.x *= -1
+		flipped = true
+	if Input.is_action_just_pressed(\"right\") and flipped:
+		scale.x *= -1
+		flipped = false
+"
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 18.5, 53 )
+
+[sub_resource type="GDScript" id=17]
+script/source = "extends Area2D
+
+var flipped
+
+func _input(event):
+	if Input.is_action_just_pressed(\"left\") and !flipped:
+		scale.x *= -1
+		flipped = true
+	if Input.is_action_just_pressed(\"right\") and flipped:
+		scale.x *= -1
+		flipped = false
+"
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 42.125, 12.75 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 20
@@ -103,50 +171,12 @@ texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 11 )
+anims/attkH = SubResource( 18 )
+anims/attkL = SubResource( 19 )
+anims/attkS = SubResource( 20 )
+anims/attkW = SubResource( 21 )
 anims/dashL = SubResource( 12 )
 anims/dashR = SubResource( 13 )
-
-[node name="Weapons" type="Node" parent="."]
-
-[node name="SwordHitbox" type="Area2D" parent="Weapons"]
-collision_layer = 2
-collision_mask = 0
-input_pickable = false
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/SwordHitbox"]
-position = Vector2( 104, -82 )
-shape = SubResource( 10 )
-
-[node name="LanceHitbox" type="Area2D" parent="Weapons"]
-collision_layer = 2
-collision_mask = 0
-input_pickable = false
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/LanceHitbox"]
-position = Vector2( 146, -58 )
-shape = SubResource( 9 )
-
-[node name="WhipHitbox" type="Area2D" parent="Weapons"]
-collision_layer = 2
-collision_mask = 0
-input_pickable = false
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/WhipHitbox"]
-position = Vector2( 80, -80 )
-shape = SubResource( 8 )
-
-[node name="HammerHitbox" type="Area2D" parent="Weapons"]
-collision_layer = 2
-collision_mask = 0
-input_pickable = false
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/HammerHitbox"]
-position = Vector2( 103.875, -106 )
-shape = SubResource( 7 )
 
 [node name="SFX" type="Node" parent="."]
 
@@ -176,3 +206,51 @@ visible = false
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 0, -85.5 )
 shape = SubResource( 6 )
+
+[node name="SwordHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+input_pickable = false
+monitoring = false
+monitorable = false
+script = SubResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordHitbox"]
+position = Vector2( 104, -82 )
+shape = SubResource( 10 )
+
+[node name="LanceHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+input_pickable = false
+monitoring = false
+monitorable = false
+script = SubResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LanceHitbox"]
+position = Vector2( 146, -58 )
+shape = SubResource( 9 )
+
+[node name="WhipHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+input_pickable = false
+monitoring = false
+monitorable = false
+script = SubResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WhipHitbox"]
+position = Vector2( 80, -80 )
+shape = SubResource( 8 )
+
+[node name="HammerHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+input_pickable = false
+monitoring = false
+monitorable = false
+script = SubResource( 17 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerHitbox"]
+position = Vector2( 103.875, -106 )
+shape = SubResource( 7 )

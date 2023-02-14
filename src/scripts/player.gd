@@ -64,11 +64,17 @@ func _physics_process(delta):
 		_velocity.x = -speed.x
 	else:
 		_velocity.x = 0
-	
-			
+		
+	if _velocity.x< 0:
+		sprite.flip_h = true
+	elif _velocity.x> 0:
+		sprite.flip_h = false
+
+func _input(event):
 			#WEAPON CHECKS
 	if Input.is_action_just_pressed("attack"):
 		attack()
+		print("attacked")
 	if Input.is_action_just_pressed("weap1") and swordUnlocked:
 		currentWeapon = 1
 	if Input.is_action_just_pressed("weap2") and whipUnlocked:
@@ -84,13 +90,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("prevweap"):
 		currentWeapon -= 1
 		weaponCheck()
-
 	
-	if _velocity.x< 0:
-		sprite.flip_h = true
-	elif _velocity.x> 0:
-		sprite.flip_h = false
-		
 		
 			#ATTACKING STUFF
 func attack():
@@ -130,12 +130,16 @@ func rememberJumpTime():
 	
 func swordAttack():
 	SwordSound.play()
+	AnimP.play("attkS")
 	
 func whipAttack():
 	WhipSound.play()
+	AnimP.play("attkW")
 	
 func lanceAttack():
 	LanceSound.play()
+	AnimP.play("attkL")
 	
 func hammerAttack():
 	HammerSound.play()
+	AnimP.play("attkH")
