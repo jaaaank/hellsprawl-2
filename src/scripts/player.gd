@@ -162,8 +162,8 @@ func _on_HitDetector_body_entered(body):
 	updateHealth()
 	
 func updateHealth():
-	if health>10:
-		health = 10
+	if health>GameData.maxHealth:
+		health = GameData.maxHealth
 	GameData.playerHealth = health
 	print("health pushed")
 
@@ -171,8 +171,8 @@ func updateHealth():
 func healthCheck():
 	health = GameData.playerHealth
 	print("health pulled")
-	if health>10:
-		health = 10
+	if health>GameData.maxHealth:
+		health = GameData.maxHealth
 	
 
 	#this WILL NOT WORK if running under 30 fps
