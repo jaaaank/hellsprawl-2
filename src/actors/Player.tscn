@@ -371,9 +371,8 @@ stream = SubResource( 4 )
 [node name="HitDetector" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
-collision_mask = 44
+collision_mask = 236
 input_pickable = false
-monitorable = false
 
 [node name="HitShape" type="CollisionShape2D" parent="HitDetector"]
 modulate = Color( 1, 0, 0, 1 )

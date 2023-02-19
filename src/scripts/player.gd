@@ -11,13 +11,13 @@ onready var DashSound:= $SFX/Dash
 onready var SwordSound:= $SFX/SwordAttack
 onready var LanceSound:= $SFX/LanceAttack
 onready var HammerSound:= $SFX/HammerAttack
-# 0 = none, 1 = Bloodied Shortsword, 2 = Horseman’s Whip, 3 =Unholy Lance, 4 = Blood Hammer
+# 0 = none, 1 = Bloodied Shortsword, 2 = Unholy Lance, 3 = Bloodstone Hammer
 onready var currentWeapon: int = 0
 
 var canJump: bool = true
 var jumpPressed: bool = false
 
-var canAttack: bool = true
+var canAttack: bool = false
 var swordUnlocked: bool = true
 var lanceUnlocked: bool = true
 var hammerUnlocked: bool = true
@@ -29,6 +29,9 @@ var canWallJump: bool = false
 
 func _ready():
 	weaponCheck()
+	health = GameData.playerHealth
+	if swordUnlocked:
+		canAttack = true
 
 func _physics_process(delta):
 	var jumpInterrupted: = Input.is_action_just_released("jump") and _velocity.y < 0.0
@@ -73,7 +76,7 @@ func _physics_process(delta):
 		sprite.flip_h = false
 
 func _input(event):
-	print(health)
+	print(GameData.playerHealth)
 	if Input.is_action_just_pressed("attack") and canAttack:
 		attack()
 		print("attacked")
@@ -159,23 +162,37 @@ func dashCooldown():
 func _on_HitDetector_body_entered(body):
 	print("hurt")
 	health -= 1
-	updateHealth()
+	healthPush()
 	
-func updateHealth():
+func healthPush():
 	if health>GameData.maxHealth:
 		health = GameData.maxHealth
 	GameData.playerHealth = health
 	print("health pushed")
 
 	
-func healthCheck():
+func healthPull():
 	health = GameData.playerHealth
 	print("health pulled")
 	if health>GameData.maxHealth:
 		health = GameData.maxHealth
 	
+func checkHealth():
+	if health > GameData.maxHealth:
+		health = GameData.maxHealth
+	else:
+		pass
 
-	#this WILL NOT WORK if running under 30 fps
 func _on_HitDetector_area_entered(area):
-	yield(get_tree().create_timer(.03334), "timeout")
-	healthCheck()
+	if area.is_in_group("healthPickup"):
+		GameData.playerHealth += 3
+		health += 3
+		checkHealth()
+		healthPush()
+	elif area.is_in_group("maxHealthPickup"):
+		GameData.maxHealth += 1
+		health += 10
+		checkHealth()
+		healthPush()
+	else:
+		pass

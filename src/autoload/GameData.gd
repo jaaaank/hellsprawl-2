@@ -1,6 +1,6 @@
 extends Node
 
-signal healed
+signal heath_changed
 
 export var playerPos: Vector2 = Vector2.ZERO setget set_pos
 var secrets: int = 0 setget set_secrets
@@ -28,11 +28,13 @@ func set_hammer(value: bool) -> void:
 	
 func set_max_health(value: int) -> void:
 	maxHealth = value
+	emit_signal("heath_changed")
 
 func set_health(value: int) -> void:
 	playerHealth = value
 	if playerHealth>maxHealth:
 		playerHealth = maxHealth
+	emit_signal("heath_changed")
 	
 	
 		#NEED TO SAVE:

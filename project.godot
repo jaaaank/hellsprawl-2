@@ -234,9 +234,11 @@ pause={
 2d_physics/layer_1="player"
 2d_physics/layer_2="weapons"
 2d_physics/layer_3="enemies"
-2d_physics/layer_4="collectibles"
+2d_physics/layer_4="pickups"
 2d_physics/layer_5="tiles"
 2d_physics/layer_6="obstacles"
+2d_physics/layer_7="secrets"
+2d_physics/layer_8="weaponpickups"
 
 [physics]
 
