@@ -6,6 +6,7 @@ onready var sprite: Sprite = $PlayerSprite
 onready var AnimP:= $AnimationPlayer
 onready var hitDetector := $HitDetector
 
+onready var HeartBeat:= $SFX/HeartBeat
 onready var HurtSound:= $SFX/Hurt
 onready var DeathSound:= $SFX/Dead
 onready var DashSound:= $SFX/Dash
@@ -21,9 +22,9 @@ var jumpPressed: bool = false
 var iFrames: bool = false
 
 var canAttack: bool = false
-var swordUnlocked: bool = true
-var lanceUnlocked: bool = true
-var hammerUnlocked: bool = true
+var swordUnlocked: bool = false
+var lanceUnlocked: bool = false
+var hammerUnlocked: bool = false
 
 var canDoubleJump: bool = false
 var canDash: bool = true
@@ -31,6 +32,7 @@ var canWallJump: bool = false
 
 
 func _ready():
+	GameData.connect("sword_unlocked", self, "swordUnlock")
 	weaponCheck()
 	health = GameData.playerHealth
 	if swordUnlocked:
@@ -85,19 +87,24 @@ func _input(event):
 		attack()
 	if Input.is_action_just_pressed("weap1") and swordUnlocked:
 		currentWeapon = 1
+		GameData.currentWeapon = 1
 	if Input.is_action_just_pressed("weap2") and lanceUnlocked:
 		currentWeapon = 2
+		GameData.currentWeapon = 2
 	if Input.is_action_just_pressed("weap3") and hammerUnlocked:
 		currentWeapon = 3
+		GameData.currentWeapon = 3
 		
 	if Input.is_action_just_pressed("nextweap"):
 		currentWeapon += 1
+		GameData.currentWeapon += 1
 		weaponCheck()
 	if Input.is_action_just_pressed("prevweap"):
 		currentWeapon -= 1
+		GameData.currentWeapon -= 1
 		weaponCheck()
 	
-	if Input.is_action_just_pressed("dash") and canDash:
+	if Input.is_action_just_pressed("dash") and canDash and GameData.dashUnlocked:
 		DashSound.play()
 		canAttack = false
 		if sprite.flip_h:
@@ -125,14 +132,19 @@ func attack():
 func weaponCheck():
 	if currentWeapon > 0 and !swordUnlocked:
 		currentWeapon = 0
+		GameData.currentWeapon = 0
 	if currentWeapon <1 and swordUnlocked:
 		currentWeapon = 1
+		GameData.currentWeapon = 1
 	if currentWeapon >1 and!lanceUnlocked:
 		currentWeapon = 1
+		GameData.currentWeapon = 1
 	if currentWeapon >2 and!hammerUnlocked:
 		currentWeapon = 2
+		GameData.currentWeapon = 2
 	if currentWeapon >3:
 		currentWeapon = 3
+		GameData.currentWeapon = 3
 		
 	
 func coyoteTime():
@@ -179,6 +191,8 @@ func _on_HitDetector_body_entered(body):
 		hitDetector.set_collision_mask_bit(2, false)
 		set_collision_mask_bit(2, false)
 		iFrames = true
+		if health == 1:
+			HeartBeat.play()
 		yield(get_tree().create_timer(1.5), "timeout")
 		iFrames = false
 		hitDetector.set_collision_mask_bit(2, true)
@@ -210,12 +224,20 @@ func _on_HitDetector_area_entered(area):
 	if area.is_in_group("healthPickup"):
 		GameData.playerHealth += 3
 		health += 3
+		HeartBeat.playing = false
 		checkHealth()
 		healthPush()
 	elif area.is_in_group("maxHealthPickup"):
 		GameData.maxHealth += 1
 		health += 10
+		HeartBeat.playing = false
 		checkHealth()
 		healthPush()
 	else:
 		pass
+		
+func swordUnlock():
+	print("waghasf")
+	swordUnlocked = true
+	canAttack = true
+	weaponCheck()

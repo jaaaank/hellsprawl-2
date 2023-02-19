@@ -1,5 +1,6 @@
 extends Control
 
+onready var curWeap: Sprite = $AspectRatioContainer/CurrentWeapon
 onready var heart6: Sprite = $HealthBar/Heart6
 onready var heart7: Sprite = $HealthBar/Heart7
 onready var heart8: Sprite = $HealthBar/Heart8
@@ -9,11 +10,13 @@ onready var AnimP:= $AnimationPlayer
 
 func _ready():
 	GameData.connect("heath_changed", self, "update_interface")
+	GameData.connect("weapon_changed", self, "update_interface")
 	update_interface()
 	
 func update_interface():
 	checkMaxHearts()
 	animateHearts()
+	animateWeapIcons()
 	
 	
 func animateHearts():
@@ -85,3 +88,18 @@ func checkMaxHearts():
 	else:
 		animateHearts()
 		return
+
+func animateWeapIcons():
+	if GameData.currentWeapon == 0:
+		curWeap.visible = false
+		print("yeah")
+	else:
+		curWeap.visible = true
+		if GameData.currentWeapon == 1:
+			curWeap.frame = 0
+		elif GameData.currentWeapon == 2:
+			curWeap.frame = 1
+		elif GameData.currentWeapon == 3:
+			curWeap.frame = 2
+		else:
+			return

@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
+[ext_resource path="res://assets/audio/heartbeat.mp3" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 61, 84.5 )
@@ -367,6 +368,11 @@ stream = SubResource( 4 )
 [node name="Hurt" type="AudioStreamPlayer" parent="SFX"]
 
 [node name="Dead" type="AudioStreamPlayer" parent="SFX"]
+
+[node name="HeartBeat" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 3 )
+volume_db = -15.0
+pitch_scale = 0.5
 
 [node name="HitDetector" type="Area2D" parent="."]
 collision_layer = 0
