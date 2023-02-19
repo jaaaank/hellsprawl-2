@@ -4,6 +4,7 @@ export (float, 0, 1.0) var acceleration = 0.25
 
 onready var sprite: Sprite = $PlayerSprite
 onready var AnimP:= $AnimationPlayer
+onready var hitDetector := $HitDetector
 
 onready var HurtSound:= $SFX/Hurt
 onready var DeathSound:= $SFX/Dead
@@ -14,8 +15,10 @@ onready var HammerSound:= $SFX/HammerAttack
 # 0 = none, 1 = Bloodied Shortsword, 2 = Unholy Lance, 3 = Bloodstone Hammer
 onready var currentWeapon: int = 0
 
+var attacking: bool = false
 var canJump: bool = true
 var jumpPressed: bool = false
+var iFrames: bool = false
 
 var canAttack: bool = false
 var swordUnlocked: bool = true
@@ -50,7 +53,6 @@ func _physics_process(delta):
 		if jumpPressed:
 			_velocity.y = -speed.y
 		
-	
 	if !is_on_floor():
 		coyoteTime()
 		_velocity.y += gravity * delta
@@ -74,12 +76,13 @@ func _physics_process(delta):
 		sprite.flip_h = true
 	elif _velocity.x> 0:
 		sprite.flip_h = false
+	if attacking:
+		_velocity.x = _velocity.x / 10
 
 func _input(event):
 	print(GameData.playerHealth)
 	if Input.is_action_just_pressed("attack") and canAttack:
 		attack()
-		print("attacked")
 	if Input.is_action_just_pressed("weap1") and swordUnlocked:
 		currentWeapon = 1
 	if Input.is_action_just_pressed("weap2") and lanceUnlocked:
@@ -143,16 +146,25 @@ func rememberJumpTime():
 	pass
 	
 func swordAttack():
+	attacking = true
 	SwordSound.play()
 	AnimP.play("attkS")
+	yield(AnimP, "animation_finished")
+	attacking = false
 	
 func lanceAttack():
+	attacking = true
 	LanceSound.play()
 	AnimP.play("attkL")
+	yield(AnimP, "animation_finished")
+	attacking = false
 	
 func hammerAttack():
+	attacking = true
 	HammerSound.play()
 	AnimP.play("attkH")
+	yield(AnimP, "animation_finished")
+	attacking = false
 
 func dashCooldown():
 	canDash = false
@@ -160,9 +172,20 @@ func dashCooldown():
 	canDash = true
 
 func _on_HitDetector_body_entered(body):
-	print("hurt")
-	health -= 1
-	healthPush()
+	if not iFrames:
+		print("hurt")
+		health -= 1
+		healthPush()
+		hitDetector.set_collision_mask_bit(2, false)
+		set_collision_mask_bit(2, false)
+		iFrames = true
+		yield(get_tree().create_timer(1.5), "timeout")
+		iFrames = false
+		hitDetector.set_collision_mask_bit(2, true)
+		set_collision_mask_bit(2, true)
+		return
+	else:
+		return
 	
 func healthPush():
 	if health>GameData.maxHealth:

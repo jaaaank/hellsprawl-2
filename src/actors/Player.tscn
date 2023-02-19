@@ -369,7 +369,6 @@ stream = SubResource( 4 )
 [node name="Dead" type="AudioStreamPlayer" parent="SFX"]
 
 [node name="HitDetector" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 236
 input_pickable = false

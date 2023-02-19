@@ -10,6 +10,9 @@ var hammerUnlocked: bool = false setget set_hammer
 export var playerHealth: int = 5 setget set_health
 var maxHealth: int = 5 setget set_max_health
 
+func _input(event):
+	if Input.is_action_just_pressed("pause"):
+		get_tree().reload_current_scene()
 
 func set_pos(value: Vector2) -> void:
 	playerPos = value
