@@ -18,9 +18,8 @@ func _ready():
 func _get_configuration_warning() -> String:
 	return \"next_scene_path must be set dumbfuck\" if next_scene_path == \"\" else \"\"
 	
-
-
-func _on_ChangeSceneButton_button_up():
+	
+func _on_Secrets_button_up():
 	get_tree().change_scene(next_scene_path)
 "
 
@@ -66,6 +65,7 @@ margin_right = 610.0
 margin_bottom = 152.0
 text = "Secrets"
 script = SubResource( 1 )
+next_scene_path = "res://src/screens/Secrets.tscn"
 
 [node name="Credits" parent="Buttons" instance=ExtResource( 1 )]
 anchor_left = 0.0
@@ -83,3 +83,5 @@ next_scene_path = "res://src/screens/Credits.tscn"
 margin_top = 180.0
 margin_right = 610.0
 margin_bottom = 200.0
+
+[connection signal="button_up" from="Buttons/Secrets" to="Buttons/Secrets" method="_on_Secrets_button_up"]

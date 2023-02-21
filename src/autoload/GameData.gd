@@ -7,7 +7,7 @@ signal hammer_unlocked
 
 var playerPos: Vector2 = Vector2.ZERO setget set_pos
 var souls: int = 0 setget set_souls
-var secrets: int = 0 setget set_secrets
+var secrets: int = 1 setget set_secrets
 var dashUnlocked: bool = false setget set_dash
 var swordUnlocked: bool = false setget set_sword
 var lanceUnlocked: bool = false setget set_lance
