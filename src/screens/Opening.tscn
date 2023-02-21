@@ -38,7 +38,7 @@ tracks/0/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
-next_scene_path = "res://src/levels/TestLevel.tscn"
+next_scene_path = "res://src/screens/MainMenu.tscn"
 
 [node name="Opening" type="CanvasLayer" parent="."]
 

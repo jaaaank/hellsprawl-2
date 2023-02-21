@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Button
+
+func _on_QuitButton_button_up():
+	get_tree().quit()
+"
+
+[node name="QuitButton" type="Button"]
+margin_right = 86.0
+margin_bottom = 20.0
+text = "Quit"
+script = SubResource( 1 )
+
+[connection signal="button_up" from="." to="." method="_on_QuitButton_button_up"]
