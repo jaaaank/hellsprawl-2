@@ -33,6 +33,8 @@ var canWallJump: bool = false
 
 func _ready():
 	GameData.connect("sword_unlocked", self, "swordUnlock")
+	GameData.connect("lance_unlocked", self, "lanceUnlock")
+	GameData.connect("hammer_unlocked", self, "hammerUnlock")
 	weaponCheck()
 	health = GameData.playerHealth
 	if swordUnlocked:
@@ -237,7 +239,16 @@ func _on_HitDetector_area_entered(area):
 		pass
 		
 func swordUnlock():
-	print("waghasf")
 	swordUnlocked = true
+	canAttack = true
+	weaponCheck()
+
+func lanceUnlock():
+	lanceUnlocked = true
+	canAttack = true
+	weaponCheck()
+
+func hammerUnlock():
+	hammerUnlocked = true
 	canAttack = true
 	weaponCheck()
