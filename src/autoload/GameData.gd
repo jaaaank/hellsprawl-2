@@ -5,7 +5,8 @@ signal sword_unlocked
 signal lance_unlocked
 signal hammer_unlocked
 
-export var playerPos: Vector2 = Vector2.ZERO setget set_pos
+var playerPos: Vector2 = Vector2.ZERO setget set_pos
+var souls: int = 0 setget set_souls
 var secrets: int = 0 setget set_secrets
 var dashUnlocked: bool = false setget set_dash
 var swordUnlocked: bool = false setget set_sword
@@ -23,6 +24,9 @@ func set_pos(value: Vector2) -> void:
 
 func set_secrets(value: int) -> void:
 	secrets = value
+	
+func set_souls(value: int) -> void:
+	souls = value
 
 func set_dash(value: bool) -> void:
 	dashUnlocked = value
