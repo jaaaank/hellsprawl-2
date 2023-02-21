@@ -7,7 +7,7 @@ func _ready() -> void:
 	speed.x= 60.0
 	AnimP.play("walk")
 	health = 3
-	_velocity.x = -speed.x + 200.0
+	_velocity.x = -speed.x + 500.0
 	
 func _physics_process(delta: float) -> void:
 	if _velocity.x< 0:
