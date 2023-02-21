@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/resources/wastes.tres" type="TileSet" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://src/objects/HammerUnlock.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/objects/LanceUnlock.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/actors/Sona.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/actors/fleshling.tscn" type="PackedScene" id=13]
 
 [node name="TestLevel" type="Node2D"]
 
@@ -64,3 +65,6 @@ position = Vector2( -419, -23 )
 [node name="Sona" parent="." instance=ExtResource( 12 )]
 position = Vector2( -3704, 0 )
 scale = Vector2( 2.08, 2.08 )
+
+[node name="Fleshling" parent="." instance=ExtResource( 13 )]
+position = Vector2( -1130, -6 )
