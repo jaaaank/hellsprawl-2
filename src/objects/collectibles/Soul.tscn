@@ -8,12 +8,18 @@ onready var AnimP: = $AnimationPlayer
 onready var Audio: = $AudioStreamPlayer2D
 
 
+func _ready():
+	if GameData.soulsCollected[soulNumber] == true:
+		queue_free()
+	else:
+		pass
+
 func _on_Secret_body_entered(body):
-	GameData.souls += 1
-	Audio.play()
-	GameData.soulsCollected[soulNumber] = true
+		GameData.souls += 1
+		Audio.play()
+		GameData.soulsCollected[soulNumber] = true
 	
-	queue_free()
+		queue_free()
 "
 
 [sub_resource type="RectangleShape2D" id=1]
