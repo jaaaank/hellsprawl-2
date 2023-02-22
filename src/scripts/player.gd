@@ -37,8 +37,13 @@ func _ready():
 	GameData.connect("hammer_unlocked", self, "hammerUnlock")
 	weaponCheck()
 	health = GameData.playerHealth
-	if swordUnlocked:
+	if GameData.swordUnlocked:
+		swordUnlock()
 		canAttack = true
+	if GameData.lanceUnlocked:
+		lanceUnlock()
+	if GameData.hammerUnlocked:
+		hammerUnlock()
 
 func _physics_process(delta):
 	var jumpInterrupted: = (Input.is_action_just_released("jump") or is_on_ceiling()) and _velocity.y < 0.0
@@ -87,13 +92,13 @@ func _input(event):
 	print(GameData.playerHealth)
 	if Input.is_action_just_pressed("attack") and canAttack:
 		attack()
-	if Input.is_action_just_pressed("weap1") and swordUnlocked:
+	if Input.is_action_just_pressed("weap1") and GameData.swordUnlocked:
 		currentWeapon = 1
 		GameData.currentWeapon = 1
-	if Input.is_action_just_pressed("weap2") and lanceUnlocked:
+	if Input.is_action_just_pressed("weap2") and GameData.lanceUnlocked:
 		currentWeapon = 2
 		GameData.currentWeapon = 2
-	if Input.is_action_just_pressed("weap3") and hammerUnlocked:
+	if Input.is_action_just_pressed("weap3") and GameData.hammerUnlocked:
 		currentWeapon = 3
 		GameData.currentWeapon = 3
 		
@@ -132,16 +137,16 @@ func attack():
 		hammerAttack()
 		
 func weaponCheck():
-	if currentWeapon > 0 and !swordUnlocked:
+	if currentWeapon > 0 and !GameData.swordUnlocked:
 		currentWeapon = 0
 		GameData.currentWeapon = 0
-	if currentWeapon <1 and swordUnlocked:
+	if currentWeapon <1 and GameData.swordUnlocked:
 		currentWeapon = 1
 		GameData.currentWeapon = 1
-	if currentWeapon >1 and!lanceUnlocked:
+	if currentWeapon >1 and!GameData.lanceUnlocked:
 		currentWeapon = 1
 		GameData.currentWeapon = 1
-	if currentWeapon >2 and!hammerUnlocked:
+	if currentWeapon >2 and!GameData.hammerUnlocked:
 		currentWeapon = 2
 		GameData.currentWeapon = 2
 	if currentWeapon >3:

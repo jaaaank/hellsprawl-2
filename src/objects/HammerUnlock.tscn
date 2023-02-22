@@ -4,6 +4,10 @@
 script/source = "extends Area2D
 
 
+func _ready():
+	if GameData.hammerUnlocked:
+		queue_free()
+		
 func _on_HammerUnlock_body_entered(body):
 	GameData.hammerUnlocked = true
 	
