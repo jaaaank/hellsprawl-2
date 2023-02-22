@@ -9,7 +9,7 @@ signal hammer_unlocked
 var spawnNum: int = 1 setget set_spawn #TODO TODO TODO TODO
 var playerPos: Vector2 = Vector2.ZERO setget set_pos
 var souls: int = 0 setget set_souls
-var secrets: int = 1 setget set_secrets
+var secrets: int = 0 setget set_secrets
 var dashUnlocked: bool = false setget set_dash
 var swordUnlocked: bool = false setget set_sword
 var lanceUnlocked: bool = false setget set_lance
@@ -20,7 +20,7 @@ var maxHealth: int = 5 setget set_max_health
 
 func _input(event):
 	if Input.is_action_just_pressed("pause"):
-		get_tree().reload_current_scene()
+		get_tree().change_scene("res://src/screens/MainMenu.tscn")
 
 func set_pos(value: Vector2) -> void:
 	playerPos = value

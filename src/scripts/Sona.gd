@@ -11,6 +11,8 @@ func _on_Sona_area_entered(area):
 
 func _on_YES_button_up():
 	tradeSouls()
+	yield(get_tree().create_timer(1), "timeout")
+	buttons.visible = false
 
 
 func tradeSouls():

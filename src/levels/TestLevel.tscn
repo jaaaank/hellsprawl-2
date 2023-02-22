@@ -19,7 +19,6 @@ script/source = "extends Node2D
 
 onready var player: KinematicBody2D = $Player
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	if GameData.spawnNum == 1:
 		player.position.x = 0
@@ -27,10 +26,6 @@ func _ready():
 	if GameData.spawnNum == 2:
 		player.position.x = -3856
 		player.position.y = 0
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 "
 
 [node name="TestLevel" type="Node2D"]

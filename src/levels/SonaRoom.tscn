@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/resources/Wastes.tres" type="TileSet" id=2]
@@ -8,17 +8,26 @@
 [ext_resource path="res://src/userinterface/UserInterface.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/props/bone3.png" type="Texture" id=7]
 [ext_resource path="res://src/objects/RoomTransition.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/objects/collectibles/Secret.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/actors/Sona.tscn" type="PackedScene" id=12]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
-onready var Video :VideoPlayer= $UI/VideoPlayer 
+onready var Video:VideoPlayer= $UI/VideoPlayer 
+onready var TradeConfirm: CanvasLayer = $Sona/CanvasLayer
 
 
 func _ready():
 	pass # Replace with function body.
+
+
+func _on_TradeTrigger_body_entered(body):
+	TradeConfirm.visible = true
 "
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5.5, 94.25 )
 
 [node name="SonaRoom" type="Node2D"]
 script = SubResource( 1 )
@@ -50,7 +59,7 @@ anchor_bottom = 1.0
 [node name="UserInterface" parent="UI" instance=ExtResource( 6 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -3202, 0 )
+position = Vector2( -3890, 0 )
 
 [node name="Camera2D" parent="Player" index="1"]
 limit_left = -4000
@@ -73,4 +82,18 @@ tile_data = PoolIntArray( -1179711, 0, 0, -1179710, 0, 0, -1179709, 0, 0, -11797
 position = Vector2( -4114, -18 )
 next_room_path = "res://src/levels/TestLevel.tscn"
 
+[node name="TradeTrigger" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TradeTrigger"]
+position = Vector2( -2621, -98 )
+shape = SubResource( 2 )
+
+[node name="Secret" parent="." instance=ExtResource( 9 )]
+position = Vector2( -3394, -67 )
+
+[connection signal="body_entered" from="TradeTrigger" to="." method="_on_TradeTrigger_body_entered"]
+
 [editable path="Player"]
+[editable path="Sona"]

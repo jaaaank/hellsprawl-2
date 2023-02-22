@@ -79,6 +79,7 @@ anims/RESET = SubResource( 5 )
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
 visible = false
 
 [node name="NO" type="Button" parent="CanvasLayer"]
