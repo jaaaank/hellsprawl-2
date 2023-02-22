@@ -32,6 +32,7 @@ var canWallJump: bool = false
 
 
 func _ready():
+	currentWeapon = GameData.currentWeapon
 	GameData.connect("sword_unlocked", self, "swordUnlock")
 	GameData.connect("lance_unlocked", self, "lanceUnlock")
 	GameData.connect("hammer_unlocked", self, "hammerUnlock")

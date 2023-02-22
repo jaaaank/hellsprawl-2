@@ -15,14 +15,15 @@ func _ready():
 
 func _on_Sona_area_entered(area):
 	AnimP.play("Fishc")
-	monitoring = false
 	GameData.sonaHurt = true
+	yield(get_tree().create_timer(.5), "timeout")
+	monitoring = false
 
 
 func _on_YES_button_up():
 	TradeConf.visible = false
 	tradeSouls()
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(1.5), "timeout")
 	buttons.visible = false
 	TradeConf.visible = true
 	NoSouls.visible = false

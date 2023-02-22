@@ -69,7 +69,7 @@ limit_bottom = 400
 
 [node name="Sona" parent="." instance=ExtResource( 12 )]
 position = Vector2( -2365, 3 )
-scale = Vector2( 2.08, 2.08 )
+scale = Vector2( 1.84, 1.84 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
