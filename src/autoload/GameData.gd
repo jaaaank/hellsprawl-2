@@ -5,6 +5,9 @@ signal sword_unlocked
 signal lance_unlocked
 signal hammer_unlocked
 
+var soulsCollected: Array = [false, false, false, false, false, 
+false, false, false, false, false] setget set_soulsCollected
+
 
 var spawnNum: int = 1 setget set_spawn #TODO TODO TODO TODO
 var playerPos: Vector2 = Vector2.ZERO setget set_pos
@@ -22,6 +25,9 @@ var maxHealth: int = 5 setget set_max_health
 func _input(event):
 	if Input.is_action_just_pressed("pause"):
 		get_tree().change_scene("res://src/screens/MainMenu.tscn")
+
+func set_soulsCollected(value: Array) -> void:
+	soulsCollected = value
 
 func set_pos(value: Vector2) -> void:
 	playerPos = value

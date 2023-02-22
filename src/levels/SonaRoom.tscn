@@ -8,7 +8,7 @@
 [ext_resource path="res://src/userinterface/UserInterface.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/props/bone3.png" type="Texture" id=7]
 [ext_resource path="res://src/objects/RoomTransition.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/objects/collectibles/Secret.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/objects/collectibles/Soul.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/actors/Sona.tscn" type="PackedScene" id=12]
 
 [sub_resource type="GDScript" id=1]
@@ -90,7 +90,7 @@ monitorable = false
 position = Vector2( -2621, -98 )
 shape = SubResource( 2 )
 
-[node name="Secret" parent="." instance=ExtResource( 9 )]
+[node name="Soul" parent="." instance=ExtResource( 9 )]
 position = Vector2( -3394, -67 )
 
 [connection signal="body_entered" from="TradeTrigger" to="." method="_on_TradeTrigger_body_entered"]
