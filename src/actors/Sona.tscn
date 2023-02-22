@@ -16,10 +16,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.35, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 1, 0, 3, 5, 3, 4 ]
+"values": [ 1, 0, 3, 5, 3, 5, 3, 4 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -78,4 +78,29 @@ anims/RESET = SubResource( 5 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="NO" type="Button" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -646.0
+margin_top = -188.0
+margin_right = -52.0
+margin_bottom = -81.0
+text = "NO"
+
+[node name="YES" type="Button" parent="CanvasLayer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 74.0
+margin_top = -188.0
+margin_right = 668.0
+margin_bottom = -81.0
+text = "YES"
+
 [connection signal="area_entered" from="." to="." method="_on_Sona_area_entered"]
+[connection signal="button_up" from="CanvasLayer/NO" to="." method="_on_NO_button_up"]
+[connection signal="button_up" from="CanvasLayer/YES" to="." method="_on_YES_button_up"]

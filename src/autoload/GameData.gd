@@ -5,6 +5,8 @@ signal sword_unlocked
 signal lance_unlocked
 signal hammer_unlocked
 
+
+var spawnNum: int = 1 setget set_spawn #TODO TODO TODO TODO
 var playerPos: Vector2 = Vector2.ZERO setget set_pos
 var souls: int = 0 setget set_souls
 var secrets: int = 1 setget set_secrets
@@ -12,6 +14,7 @@ var dashUnlocked: bool = false setget set_dash
 var swordUnlocked: bool = false setget set_sword
 var lanceUnlocked: bool = false setget set_lance
 var hammerUnlocked: bool = false setget set_hammer
+var sonaMet: bool = false setget set_sona
 export var playerHealth: int = 5 setget set_health
 var maxHealth: int = 5 setget set_max_health
 
@@ -21,13 +24,19 @@ func _input(event):
 
 func set_pos(value: Vector2) -> void:
 	playerPos = value
+	
+func set_spawn(value: int) -> void:
+	spawnNum = value
 
 func set_secrets(value: int) -> void:
 	secrets = value
 	
 func set_souls(value: int) -> void:
 	souls = value
-
+	
+func set_sona(value: bool) -> void:
+	sonaMet = value
+	
 func set_dash(value: bool) -> void:
 	dashUnlocked = value
 
@@ -59,9 +68,11 @@ func set_health(value: int) -> void:
 			#PLAYER POSITION
 			#DASH UNLOCK STATE
 			#NUMBER OF SECRETS
+			#NUMBER OF SOULS
 			#DEAD BOSSES
 			#WEAPONS UNLOCKED
 			#PLAYER MAX HEALTH
+			#SONA MET 
 
 
 
