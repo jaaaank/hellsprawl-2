@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/sonasheet.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Sona.gd" type="Script" id=2]
@@ -54,6 +54,23 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "ded"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
 [node name="Sona" type="Area2D"]
 collision_layer = 0
 collision_mask = 3
@@ -75,6 +92,7 @@ autoplay = "Idle"
 anims/Fishc = SubResource( 3 )
 anims/Idle = SubResource( 4 )
 anims/RESET = SubResource( 5 )
+anims/ded = SubResource( 6 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
@@ -101,6 +119,47 @@ margin_top = -188.0
 margin_right = 668.0
 margin_bottom = -81.0
 text = "YES"
+
+[node name="TradeConf" type="RichTextLabel" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -110.0
+margin_top = -18.5
+margin_right = 110.0
+margin_bottom = 18.5
+bbcode_enabled = true
+bbcode_text = "[center]Trade Lost Souls to hear some secrets? [/center]"
+text = "Trade Lost Souls to hear some secrets? "
+
+[node name="NoSouls" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -110.0
+margin_top = -11.5
+margin_right = 110.0
+margin_bottom = 11.5
+bbcode_enabled = true
+bbcode_text = "[center]You don't have any Lost Souls[/center]"
+text = "You don't have any Lost Souls"
+
+[node name="GotSouls" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -110.0
+margin_top = -24.5
+margin_right = 110.0
+margin_bottom = 24.5
+bbcode_enabled = true
+bbcode_text = "[center]New secrets unlocked, go to secrets in the main menu to check them out![/center]"
+text = "New secrets unlocked, go to secrets in the main menu to check them out!"
 
 [connection signal="area_entered" from="." to="." method="_on_Sona_area_entered"]
 [connection signal="button_up" from="CanvasLayer/NO" to="." method="_on_NO_button_up"]

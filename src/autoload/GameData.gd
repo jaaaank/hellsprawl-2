@@ -15,6 +15,7 @@ var swordUnlocked: bool = false setget set_sword
 var lanceUnlocked: bool = false setget set_lance
 var hammerUnlocked: bool = false setget set_hammer
 var sonaMet: bool = false setget set_sona
+var sonaHurt: bool = false setget set_sonaH
 export var playerHealth: int = 5 setget set_health
 var maxHealth: int = 5 setget set_max_health
 
@@ -36,6 +37,9 @@ func set_souls(value: int) -> void:
 	
 func set_sona(value: bool) -> void:
 	sonaMet = value
+
+func set_sonaH(value: bool) -> void:
+	sonaHurt = value
 	
 func set_dash(value: bool) -> void:
 	dashUnlocked = value
