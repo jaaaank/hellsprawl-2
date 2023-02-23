@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bone3.png-0d112a613d8a4af2d42dd9546e464889.stex"
+path="res://.import/bone3.png-150e9ad818ec401e7c8af394bb51558c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/props/bone3.png"
-dest_files=[ "res://.import/bone3.png-0d112a613d8a4af2d42dd9546e464889.stex" ]
+source_file="res://assets/props/bones/bone3.png"
+dest_files=[ "res://.import/bone3.png-150e9ad818ec401e7c8af394bb51558c.stex" ]
 
 [params]
 

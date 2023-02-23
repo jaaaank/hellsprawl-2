@@ -2,12 +2,13 @@
 
 [ext_resource path="res://src/actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/resources/Wastes.tres" type="TileSet" id=2]
-[ext_resource path="res://assets/props/bone5.png" type="Texture" id=3]
-[ext_resource path="res://assets/props/bone4.png" type="Texture" id=4]
-[ext_resource path="res://assets/props/bone.png" type="Texture" id=5]
+[ext_resource path="res://assets/props/bones/bone5.png" type="Texture" id=3]
+[ext_resource path="res://assets/props/bones/bone4.png" type="Texture" id=4]
+[ext_resource path="res://assets/props/bones/bone.png" type="Texture" id=5]
 [ext_resource path="res://src/userinterface/UserInterface.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/props/bone3.png" type="Texture" id=7]
+[ext_resource path="res://assets/props/bones/bone3.png" type="Texture" id=7]
 [ext_resource path="res://src/objects/RoomTransition.tscn" type="PackedScene" id=8]
+
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
