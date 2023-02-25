@@ -8,7 +8,7 @@ signal hammer_unlocked
 var soulsCollected: Array = [false, false, false, false, false, 
 false, false, false, false, false] setget set_soulsCollected
 
-
+var checkpoint: String = "res://src/levels/TestLevel.tscn" setget set_checkpoint
 var spawnNum: int = 1 setget set_spawn #TODO TODO TODO TODO
 var souls: int = 0 setget set_souls
 var secrets: int = 0 setget set_secrets
@@ -27,7 +27,9 @@ func _input(event):
 
 func set_soulsCollected(value: Array) -> void:
 	soulsCollected = value
-
+	
+func set_checkpoint(value: String) -> void:
+	checkpoint = "res://src/levels/CheckRooms/"+ value + ".tscn"
 	
 func set_spawn(value: int) -> void:
 	spawnNum = value

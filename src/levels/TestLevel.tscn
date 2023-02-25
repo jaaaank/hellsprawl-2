@@ -86,11 +86,13 @@ position = Vector2( -1130, 0 )
 
 [node name="RoomTransition" parent="." instance=ExtResource( 14 )]
 position = Vector2( 668, -16 )
+scale = Vector2( 1, 6.96 )
 next_room_path = "res://src/levels/SonaRoom.tscn"
 
 [node name="RoomTransition2" parent="." instance=ExtResource( 14 )]
 position = Vector2( -4046, 3 )
-next_room_path = "res://src/levels/PrevTestRoom.tscn"
+scale = Vector2( 1, 7.64 )
+next_room_path = "res://src/levels/CheckRooms/PrevTestRoom.tscn"
 spawn = 2
 
 [editable path="Player"]
