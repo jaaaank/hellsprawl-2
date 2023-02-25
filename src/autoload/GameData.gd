@@ -10,7 +10,6 @@ false, false, false, false, false] setget set_soulsCollected
 
 
 var spawnNum: int = 1 setget set_spawn #TODO TODO TODO TODO
-var playerPos: Vector2 = Vector2.ZERO setget set_pos
 var souls: int = 0 setget set_souls
 var secrets: int = 0 setget set_secrets
 var dashUnlocked: bool = false setget set_dash
@@ -29,8 +28,6 @@ func _input(event):
 func set_soulsCollected(value: Array) -> void:
 	soulsCollected = value
 
-func set_pos(value: Vector2) -> void:
-	playerPos = value
 	
 func set_spawn(value: int) -> void:
 	spawnNum = value
@@ -75,7 +72,7 @@ func set_health(value: int) -> void:
 	
 	
 		#NEED TO SAVE:
-			#PLAYER POSITION
+			#PLAYER SAVE LOCATION
 			#DASH UNLOCK STATE
 			#NUMBER OF SECRETS
 			#NUMBER OF SOULS

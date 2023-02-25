@@ -49,7 +49,6 @@ func _ready():
 func _physics_process(delta):
 	var jumpInterrupted: = (Input.is_action_just_released("jump") or is_on_ceiling()) and _velocity.y < 0.0
 	move_and_slide(_velocity, FLOOR_NORMAL)
-	GameData.playerPos = position
 	if jumpInterrupted:
 		_velocity.y = 0.0
 	if Input.is_action_just_pressed("jump"):
