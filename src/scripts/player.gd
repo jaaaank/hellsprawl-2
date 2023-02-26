@@ -32,6 +32,9 @@ var canWallJump: bool = false
 
 
 func _ready():
+	health = GameData.playerHealth
+	if health == 1:
+		HeartBeat.play()
 	currentWeapon = GameData.currentWeapon
 	GameData.connect("sword_unlocked", self, "swordUnlock")
 	GameData.connect("lance_unlocked", self, "lanceUnlock")
@@ -89,7 +92,6 @@ func _physics_process(delta):
 		_velocity.x = _velocity.x / 10
 
 func _input(event):
-	print(GameData.playerHealth)
 	if Input.is_action_just_pressed("attack") and canAttack:
 		attack()
 	if Input.is_action_just_pressed("weap1") and GameData.swordUnlocked:
@@ -191,22 +193,7 @@ func dashCooldown():
 	canDash = true
 
 func _on_HitDetector_body_entered(body):
-	if not iFrames:
-		print("hurt")
-		health -= 1
-		healthPush()
-		hitDetector.set_collision_mask_bit(2, false)
-		set_collision_mask_bit(2, false)
-		iFrames = true
-		if health == 1:
-			HeartBeat.play()
-		yield(get_tree().create_timer(1.5), "timeout")
-		iFrames = false
-		hitDetector.set_collision_mask_bit(2, true)
-		set_collision_mask_bit(2, true)
-		return
-	else:
-		return
+	damage()
 	
 func healthPush():
 	if health>GameData.maxHealth:
@@ -257,3 +244,21 @@ func hammerUnlock():
 	hammerUnlocked = true
 	canAttack = true
 	weaponCheck()
+
+func damage():
+	if not iFrames:
+		print("hurt")
+		health -= 1
+		healthPush()
+		hitDetector.set_collision_mask_bit(2, false)
+		set_collision_mask_bit(2, false)
+		iFrames = true
+		if health == 1:
+			HeartBeat.play()
+		yield(get_tree().create_timer(1.5), "timeout")
+		iFrames = false
+		hitDetector.set_collision_mask_bit(2, true)
+		set_collision_mask_bit(2, true)
+		return
+	else:
+		return

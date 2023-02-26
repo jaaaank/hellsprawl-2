@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/resources/Wastes.tres" type="TileSet" id=2]
@@ -6,12 +6,7 @@
 [ext_resource path="res://src/actors/massalt.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/objects/collectibles/HealthPickup.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/userinterface/UserInterface.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/objects/collectibles/MaxHealthPickup.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/objects/collectibles/DashUnlock.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/objects/SwordUnlock.tscn" type="PackedScene" id=9]
-[ext_resource path="res://src/objects/HammerUnlock.tscn" type="PackedScene" id=10]
-[ext_resource path="res://src/objects/LanceUnlock.tscn" type="PackedScene" id=11]
-[ext_resource path="res://src/actors/Lancer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/actors/fleshling.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/objects/RoomTransition.tscn" type="PackedScene" id=14]
 
@@ -103,27 +98,9 @@ position = Vector2( -1606, 0 )
 [node name="HealthPickup" parent="." instance=ExtResource( 5 )]
 position = Vector2( -1823, -119 )
 
-[node name="MaxHealthPickup" parent="." instance=ExtResource( 7 )]
-position = Vector2( -2350, -181 )
-
-[node name="MaxHealthPickup2" parent="." instance=ExtResource( 7 )]
-position = Vector2( -2633, -211 )
-
-[node name="MaxHealthPickup3" parent="." instance=ExtResource( 7 )]
-position = Vector2( -2944, -219 )
-
 [node name="SwordUnlock" parent="." instance=ExtResource( 9 )]
 position = Vector2( -178, -7 )
 scale = Vector2( 1.51627, 1.51627 )
-
-[node name="DashUnlock" parent="." instance=ExtResource( 8 )]
-position = Vector2( 28, -24 )
-
-[node name="HammerUnlock" parent="." instance=ExtResource( 10 )]
-position = Vector2( -612, 0 )
-
-[node name="LanceUnlock" parent="." instance=ExtResource( 11 )]
-position = Vector2( -423, 0 )
 
 [node name="Fleshling" parent="." instance=ExtResource( 13 )]
 position = Vector2( -1130, 0 )
@@ -138,8 +115,5 @@ position = Vector2( -4046, 3 )
 scale = Vector2( 1, 7.64 )
 next_room_path = "res://src/levels/CheckRooms/PrevTestRoom.tscn"
 spawn = 2
-
-[node name="Lancer" parent="." instance=ExtResource( 12 )]
-position = Vector2( -899, -44 )
 
 [editable path="Player"]

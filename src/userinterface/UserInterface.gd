@@ -1,5 +1,6 @@
 extends Control
 
+onready var vignette: CanvasLayer = $HealthVignette
 onready var curWeap: Sprite = $AspectRatioContainer/CurrentWeapon
 onready var heart6: Sprite = $HealthBar/Heart6
 onready var heart7: Sprite = $HealthBar/Heart7
@@ -20,36 +21,45 @@ func update_interface():
 	
 	
 func animateHearts():
-	print("animating")
 	if GameData.playerHealth == 10:
 		AnimP.play("10hp")
+		vignette.visible = false
 		return
 	elif GameData.playerHealth == 9:
 		AnimP.play("9hp")
+		vignette.visible = false
 		return
 	elif GameData.playerHealth == 8:
 		AnimP.play("8hp")
+		vignette.visible = false
 		return
 	elif GameData.playerHealth == 7:
 		AnimP.play("7hp")
+		vignette.visible = false
 		return
 	elif GameData.playerHealth == 6:
 		AnimP.play("6hp")
+		vignette.visible = false
 		return
 	elif GameData.playerHealth == 5:
 		AnimP.play("5hp")
+		vignette.visible = false
 		return
 	elif GameData.playerHealth == 4:
 		AnimP.play("4hp")
+		vignette.visible = false
 		return
 	elif GameData.playerHealth == 3:
 		AnimP.play("3hp")
+		vignette.visible = false
 		return
 	elif GameData.playerHealth == 2:
 		AnimP.play("2hp")
+		vignette.visible = false
 		return
 	elif GameData.playerHealth == 1:
 		AnimP.play("1hp")
+		vignette.visible = true
 		return
 	else:
 		AnimP.play("0hp")
@@ -92,7 +102,6 @@ func checkMaxHearts():
 func animateWeapIcons():
 	if GameData.currentWeapon == 0:
 		curWeap.visible = false
-		print("yeah")
 	else:
 		curWeap.visible = true
 		if GameData.currentWeapon == 1:

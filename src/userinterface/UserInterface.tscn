@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/heart.png" type="Texture" id=1]
 [ext_resource path="res://src/userinterface/UserInterface.gd" type="Script" id=2]
 [ext_resource path="res://assets/weaponicons.png" type="Texture" id=3]
+[ext_resource path="res://assets/vignette.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=12]
 resource_name = "0hp"
@@ -1604,3 +1605,15 @@ position = Vector2( 32, -41 )
 scale = Vector2( 5.16, 5.16 )
 texture = ExtResource( 3 )
 hframes = 3
+
+[node name="HealthVignette" type="CanvasLayer" parent="."]
+layer = 10
+visible = false
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="HealthVignette"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Sprite" type="Sprite" parent="HealthVignette/AspectRatioContainer"]
+position = Vector2( 960, 540 )
+texture = ExtResource( 4 )

@@ -4,5 +4,9 @@ onready var current_scene_path = get_tree().get_current_scene().get_name()
 onready var Sound: AudioStreamPlayer2D = $Sound
 onready var AnimP: AnimationPlayer = $AnimP
 
-func _on_Checkpoint_body_entered(body):
+
+
+
+
+func _on_Checkpoint_area_entered(area):
 	GameData.checkpoint = current_scene_path

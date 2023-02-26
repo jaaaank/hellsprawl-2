@@ -6,7 +6,7 @@ onready var sprite: Sprite = $Sprite
 func _ready() -> void:
 	speed.x= 60.0
 	AnimP.play("walk")
-	health = 3
+	health = 2
 	_velocity.x = -speed.x + 500.0
 	
 func _physics_process(delta: float) -> void:
