@@ -227,6 +227,8 @@ func _on_HitDetector_area_entered(area):
 		HeartBeat.playing = false
 		checkHealth()
 		healthPush()
+	elif area.get_collision_layer_bit(5):
+		damage()
 	else:
 		pass
 		
@@ -247,11 +249,11 @@ func hammerUnlock():
 
 func damage():
 	if not iFrames:
-		print("hurt")
 		health -= 1
 		healthPush()
 		hitDetector.set_collision_mask_bit(2, false)
 		set_collision_mask_bit(2, false)
+		hitDetector.set_collision_mask_bit(5, false)
 		iFrames = true
 		if health == 1:
 			HeartBeat.play()
@@ -259,6 +261,7 @@ func damage():
 		iFrames = false
 		hitDetector.set_collision_mask_bit(2, true)
 		set_collision_mask_bit(2, true)
+		hitDetector.set_collision_mask_bit(5, true)
 		return
 	else:
 		return
