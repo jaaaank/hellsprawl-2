@@ -14,7 +14,7 @@
 [ext_resource path="res://src/actors/Lancer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/actors/fleshling.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/objects/RoomTransition.tscn" type="PackedScene" id=14]
-[ext_resource path="res://src/objects/obstacles/Spikes.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/objects/obstacles/WastesSpikes.tscn" type="PackedScene" id=15]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -141,7 +141,7 @@ next_room_path = "res://src/levels/CheckRooms/PrevTestRoom.tscn"
 spawn = 2
 
 [node name="Lancer" parent="." instance=ExtResource( 12 )]
-position = Vector2( -899, -44 )
+position = Vector2( -839, -1 )
 
 [node name="Spikes" parent="." instance=ExtResource( 15 )]
 position = Vector2( 255.5, -576 )
