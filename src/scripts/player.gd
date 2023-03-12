@@ -20,6 +20,7 @@ var attacking: bool = false
 var canJump: bool = true
 var jumpPressed: bool = false
 var iFrames: bool = false
+var dashing: bool = false
 
 var canAttack: bool = false
 var swordUnlocked: bool = false
@@ -61,14 +62,21 @@ func _physics_process(delta):
 		if canJump:
 			_velocity.y = -speed.y
 			
-	if is_on_floor():
+	if is_on_floor() and !attacking and !dashing:
 		canJump = true
 		if jumpPressed:
 			_velocity.y = -speed.y
-		
-	if !is_on_floor():
+		if _velocity.x!=0:
+			AnimP.play("walk")
+		else:
+			AnimP.play("idle")
+	if !is_on_floor() and !attacking and !dashing:
 		coyoteTime()
 		_velocity.y += gravity * delta
+		if _velocity.y>0:
+			AnimP.play("fall")
+		else:
+			AnimP.play("jump")
 	
 	if Input.is_action_pressed("right") and Input.is_action_pressed("left"):
 		_velocity.x = 0
@@ -91,7 +99,7 @@ func _physics_process(delta):
 		sprite.flip_h = false
 	if attacking:
 		_velocity.x = _velocity.x / 10
-
+		
 func _input(event):
 	if Input.is_action_just_pressed("attack") and canAttack:
 		attack()
@@ -116,6 +124,7 @@ func _input(event):
 	
 	if Input.is_action_just_pressed("dash") and canDash and GameData.dashUnlocked:
 		DashSound.play()
+		dashing = true
 		canAttack = false
 		if sprite.flip_h:
 			AnimP.play("dashL")
@@ -127,6 +136,7 @@ func _input(event):
 			dashCooldown()
 			yield(AnimP, "animation_finished")
 			canAttack = true
+		dashing = false
 		
 			#ATTACKING STUFF
 func attack():
