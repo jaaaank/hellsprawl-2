@@ -103,6 +103,7 @@ func _physics_process(delta):
 func _input(event):
 	if Input.is_action_just_pressed("attack") and canAttack:
 		attack()
+		_velocity.y = 200
 	if Input.is_action_just_pressed("weap1") and GameData.swordUnlocked:
 		currentWeapon = 1
 		GameData.currentWeapon = 1
