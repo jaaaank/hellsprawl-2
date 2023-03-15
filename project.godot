@@ -263,6 +263,7 @@ pause={
 2d_physics/layer_6="obstacles"
 2d_physics/layer_7="secrets"
 2d_physics/layer_8="weaponpickups"
+2d_physics/layer_9="enemyweapons"
 
 [physics]
 

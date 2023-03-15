@@ -2,6 +2,9 @@ extends Enemy
 
 onready var AnimP: = $AnimationPlayer
 onready var sprite: = $Sprite
+onready var sword: = $Sword
+onready var spikes: = $"-spikes-"
+var flipped: = false
 var canAttack: = false
 var attkNum: = 0
 var phase2: = false
@@ -17,8 +20,16 @@ func _ready():
 func _physics_process(delta: float)-> void:
 	if _velocity.x< 0:
 		sprite.flip_h = true
+		if not flipped:
+			sword.scale.x *= -1
+			spikes.scale.x *= -1
+			flipped = true
 	elif _velocity.x> 0:
 		sprite.flip_h = false
+		if flipped:
+			sword.scale.x *= -1
+			spikes.scale.x *= -1
+			flipped = false
 
 func attack():
 	attkNum=(randi() % 7)
@@ -50,22 +61,44 @@ func attkCooldown():
 	attack()
 
 func attk1():
+	set_physics_process(false)
+	AnimP.play("attk1")
 	print("attk1")
+	yield(AnimP, "animation_finished")
+	set_physics_process(true)
 	
 func attk2():
+	set_physics_process(false)
 	print("attk2")
+	AnimP.play("attk2")
+	yield(AnimP, "animation_finished")
+	set_physics_process(true)
 	
 func attk3():
+	set_physics_process(false)
 	print("attk3")
+
+	set_physics_process(true)
 	
 func attk4():
 	print("attk4")
+
 	
 func attk5():
+	set_physics_process(false)
 	print("attk5")
+
+	set_physics_process(true)
 	
 func attk6():
+	set_physics_process(false)
 	print("attk6")
+	AnimP.play("attk6")
+	yield(AnimP, "animation_finished")
+	set_physics_process(true)
 	
 func attk7():
+	set_physics_process(false)
 	print("attk7")
+
+	set_physics_process(true)
