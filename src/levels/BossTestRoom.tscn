@@ -16,7 +16,7 @@ onready var player: KinematicBody2D = $Player
 func _ready():
 	
 	if GameData.spawnNum == 1:
-		player.position.x = -3856
+		player.position.x = 0
 		player.position.y = 0
 	if GameData.spawnNum == 2:
 		player.position.x = 0
@@ -81,7 +81,7 @@ layer = 20
 [node name="UserInterface" parent="UI" instance=ExtResource( 6 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -3779, -16 )
+position = Vector2( -226, -78 )
 
 [node name="Camera2D" parent="Player" index="1"]
 limit_left = -3900
@@ -89,7 +89,7 @@ limit_right = 550
 limit_bottom = 150
 
 [node name="SwordUnlock" parent="." instance=ExtResource( 9 )]
-position = Vector2( -3647, -9 )
+position = Vector2( -1175, -23 )
 scale = Vector2( 1.51627, 1.51627 )
 
 [node name="RoomTransition" parent="." instance=ExtResource( 14 )]
@@ -107,6 +107,6 @@ spawn = 2
 position = Vector2( 255.5, -576 )
 
 [node name="KeyKeeper" parent="." instance=ExtResource( 3 )]
-position = Vector2( -3163, -254 )
+position = Vector2( -2136, -231 )
 
 [editable path="Player"]

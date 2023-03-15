@@ -4,6 +4,7 @@ onready var AnimP: = $AnimationPlayer
 onready var sprite: = $Sprite
 onready var sword: = $Sword
 onready var spikes: = $"-spikes-"
+var rng = RandomNumberGenerator.new()
 var flipped: = false
 var canAttack: = false
 var attkNum: = 0
@@ -32,7 +33,7 @@ func _physics_process(delta: float)-> void:
 			flipped = false
 
 func attack():
-	attkNum=(randi() % 7)
+	attkNum=(rng.randi_range(0, 7))
 	if attkNum==0:
 		print("didnt attack")
 	elif attkNum==1:
