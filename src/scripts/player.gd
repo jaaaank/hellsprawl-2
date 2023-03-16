@@ -26,10 +26,7 @@ var canAttack: bool = false
 var swordUnlocked: bool = false
 var lanceUnlocked: bool = false
 var hammerUnlocked: bool = false
-
-var canDoubleJump: bool = false
 var canDash: bool = true
-var canWallJump: bool = false
 
 
 func _ready():
@@ -180,24 +177,30 @@ func rememberJumpTime():
 	
 func swordAttack():
 	attacking = true
+	canJump = false
 	SwordSound.play()
 	AnimP.play("attkS")
 	yield(AnimP, "animation_finished")
 	attacking = false
+	canJump = true
 	
 func lanceAttack():
 	attacking = true
+	canJump = false
 	LanceSound.play()
 	AnimP.play("attkL")
 	yield(AnimP, "animation_finished")
 	attacking = false
+	canJump = true
 	
 func hammerAttack():
 	attacking = true
+	canJump = false
 	HammerSound.play()
 	AnimP.play("attkH")
 	yield(AnimP, "animation_finished")
 	attacking = false
+	canJump = true
 
 func dashCooldown():
 	canDash = false
@@ -242,8 +245,10 @@ func _on_HitDetector_area_entered(area):
 	elif area.get_collision_layer_bit(5):
 		damage()
 	elif area.is_in_group("bouncePad"):
-		print("this shit even work?")
-		_velocity.y = -speed.y
+		if Input.is_action_pressed("jump"):
+			_velocity.y = -speed.y*1.3
+		else:
+			_velocity.y = -speed.y*1.2
 	else:
 		pass
 		

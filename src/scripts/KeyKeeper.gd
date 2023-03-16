@@ -8,7 +8,7 @@ var rng = RandomNumberGenerator.new()
 var flipped: = false
 var canAttack: = false
 var attkNum: = 0
-var phase2: = false
+var phase2: = true
 
 
 func _ready():
@@ -53,7 +53,6 @@ func attack():
 			attk7()
 		else:
 			attk6()
-	attkCooldown()
 	
 func attkCooldown():
 	canAttack = false
@@ -67,6 +66,7 @@ func attk1():
 	print("attk1")
 	yield(AnimP, "animation_finished")
 	set_physics_process(true)
+	attkCooldown()
 	
 func attk2():
 	set_physics_process(false)
@@ -74,15 +74,23 @@ func attk2():
 	AnimP.play("attk2")
 	yield(AnimP, "animation_finished")
 	set_physics_process(true)
+	attkCooldown()
 	
 func attk3():
 	set_physics_process(false)
-	print("attk3")
-
+	if !phase2:
+		print("attk3")
+		AnimP.play("attk3")
+	else:
+		AnimP.play("altattk3")
+		print("altattk3")
+	yield(AnimP, "animation_finished")
 	set_physics_process(true)
+	attkCooldown()
 	
 func attk4():
 	print("attk4")
+	attkCooldown()
 
 	
 func attk5():
@@ -90,6 +98,7 @@ func attk5():
 	print("attk5")
 
 	set_physics_process(true)
+	attkCooldown()
 	
 func attk6():
 	set_physics_process(false)
@@ -97,9 +106,22 @@ func attk6():
 	AnimP.play("attk6")
 	yield(AnimP, "animation_finished")
 	set_physics_process(true)
+	attkCooldown()
 	
 func attk7():
 	set_physics_process(false)
 	print("attk7")
 
 	set_physics_process(true)
+	attkCooldown()
+
+
+func _on_Hurtbox_area_entered(area):
+	if area.get_collision_layer_bit(1):
+		damage()
+
+func damage():
+	health -= 1
+	print(health)
+	if health <=0:
+		queue_free()

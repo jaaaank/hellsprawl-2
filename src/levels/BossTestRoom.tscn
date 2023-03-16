@@ -107,6 +107,6 @@ spawn = 2
 position = Vector2( 255.5, -576 )
 
 [node name="KeyKeeper" parent="." instance=ExtResource( 3 )]
-position = Vector2( -2136, -231 )
+position = Vector2( -2388, -459 )
 
 [editable path="Player"]
