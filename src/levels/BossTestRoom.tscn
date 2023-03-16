@@ -89,7 +89,7 @@ limit_right = 550
 limit_bottom = 150
 
 [node name="SwordUnlock" parent="." instance=ExtResource( 9 )]
-position = Vector2( -1175, -23 )
+position = Vector2( -1171, -11 )
 scale = Vector2( 1.51627, 1.51627 )
 
 [node name="RoomTransition" parent="." instance=ExtResource( 14 )]

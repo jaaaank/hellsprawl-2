@@ -497,3 +497,4 @@ shape = SubResource( 7 )
 
 [connection signal="area_entered" from="HitDetector" to="." method="_on_HitDetector_area_entered"]
 [connection signal="body_entered" from="HitDetector" to="." method="_on_HitDetector_body_entered"]
+[connection signal="body_exited" from="HitDetector" to="." method="_on_HitDetector_body_exited"]

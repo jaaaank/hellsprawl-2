@@ -38,7 +38,6 @@ func _ready():
 	GameData.connect("lance_unlocked", self, "lanceUnlock")
 	GameData.connect("hammer_unlocked", self, "hammerUnlock")
 	weaponCheck()
-	health = GameData.playerHealth
 	if GameData.swordUnlocked:
 		swordUnlock()
 		canAttack = true
@@ -48,8 +47,14 @@ func _ready():
 		hammerUnlock()
 
 func _physics_process(delta):
-	var jumpInterrupted: = (Input.is_action_just_released("jump") or is_on_ceiling()) and _velocity.y < 0.0
+	if iFrames:
+		_velocity.x *= .4
+		
+	GameData.playerPosition = position
+
 	move_and_slide(_velocity, FLOOR_NORMAL)
+
+	var jumpInterrupted: = (Input.is_action_just_released("jump") or is_on_ceiling()) and _velocity.y < 0.0
 	
 	if jumpInterrupted:
 		_velocity.y = 0.0
@@ -214,12 +219,10 @@ func healthPush():
 	if health>GameData.maxHealth:
 		health = GameData.maxHealth
 	GameData.playerHealth = health
-	print("health pushed")
 
 	
 func healthPull():
 	health = GameData.playerHealth
-	print("health pulled")
 	if health>GameData.maxHealth:
 		health = GameData.maxHealth
 	
@@ -249,6 +252,8 @@ func _on_HitDetector_area_entered(area):
 			_velocity.y = -speed.y*1.3
 		else:
 			_velocity.y = -speed.y*1.2
+	elif area.get_collision_layer_bit(2):
+		damage()
 	else:
 		pass
 		
@@ -285,3 +290,4 @@ func damage():
 		return
 	else:
 		return
+

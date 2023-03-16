@@ -19,11 +19,15 @@ var hammerUnlocked: bool = false setget set_hammer
 var sonaMet: bool = false setget set_sona
 var sonaHurt: bool = false setget set_sonaH
 export var playerHealth: int = 5 setget set_health
+export var playerPosition: Vector2 = (Vector2.ZERO) setget set_position
 var maxHealth: int = 5 setget set_max_health
 
 func _input(event):
 	if Input.is_action_just_pressed("pause"):
 		get_tree().change_scene("res://src/screens/MainMenu.tscn")
+
+func set_position(value: Vector2) -> void:
+	playerPosition = value
 
 func set_soulsCollected(value: Array) -> void:
 	soulsCollected = value

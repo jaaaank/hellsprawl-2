@@ -123,5 +123,9 @@ func _on_Hurtbox_area_entered(area):
 func damage():
 	health -= 1
 	print(health)
+	if GameData.playerPosition.x < position.x and !flipped:
+		_velocity.x *= -1.0
+	if GameData.playerPosition.x > position.x and flipped:
+		_velocity.x *= -1.0
 	if health <=0:
 		queue_free()
