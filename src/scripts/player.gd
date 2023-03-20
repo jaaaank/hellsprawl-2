@@ -46,7 +46,7 @@ func _ready():
 	if GameData.hammerUnlocked:
 		hammerUnlock()
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if iFrames:
 		_velocity.x *= .4
 		

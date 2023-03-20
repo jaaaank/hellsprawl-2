@@ -16,7 +16,7 @@ func _ready():
 	health = 30
 	_velocity.x = -speed.x + 100.0
 	attkCooldown()
-
+	randomize()
 
 func _physics_process(delta: float)-> void:
 	if _velocity.x< 0:
@@ -33,7 +33,7 @@ func _physics_process(delta: float)-> void:
 			flipped = false
 
 func attack():
-	attkNum=(rng.randi_range(0, 7))
+	attkNum=(randi()%7)
 	if attkNum==0:
 		print("didnt attack")
 	elif attkNum==1:
